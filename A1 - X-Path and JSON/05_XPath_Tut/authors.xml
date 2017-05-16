@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<authors>
+  <author period="antic">
+    <name>Julius Caesar</name>
+  </author>
+  <author>
+    <name>Mike Galos</name>
+    <nationality>French</nationality>
+    <nationality>Canadian</nationality>
+  </author>
+  <author period="medieval">
+    <name>William Shakespeare</name>
+    <nationality>British</nationality>
+  </author>
+  <author period="modern">
+    <name>Eva Corets</name>
+    <nationality>British</nationality>
+  </author>
+  <author>
+    <name>Cynthia Randall</name>
+    <nationality>Canadian</nationality>
+  </author>
+  <author>
+    <name>Stefan Knorr</name>
+    <nationality>Canadian</nationality>
+  </author>
+  <author period="modern">
+    <name>Paula Thurman</name>
+    <nationality>British</nationality>
+  </author>
+  <person>
+    <name>
+      <name>
+        <name>Dr Evil</name>
+      </name>
+    </name>
+  </person>
+  <person>
+    <name>
+      <name>
+        <name>Mini Me</name>
+      </name>
+    </name>
+  </person>
+</authors>

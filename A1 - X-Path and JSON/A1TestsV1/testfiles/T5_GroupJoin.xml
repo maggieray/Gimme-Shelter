@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GroupJoin>
+  <Join>
+    <part type="Sturdy Shelves">
+      <partno>455-BX</partno>
+    </part>
+    <Group Count="2">
+      <partref>
+        <partno>455-BX</partno>
+        <zipcode></zipcode>
+      </partref>
+      <partref quantity="4">
+        <partno>455-BX</partno>
+        <zipcode>5000</zipcode>
+      </partref>
+    </Group>
+  </Join>
+  <Join>
+    <part type="Baby Monitor">
+      <partno>800-AA</partno>
+    </part>
+    <Group Count="3">
+      <partref quantity="1">
+        <partno>800-AA</partno>
+        <zipcode>3000</zipcode>
+      </partref>
+      <partref quantity="1">
+        <partno>800-AA</partno>
+        <zipcode>3000</zipcode>
+      </partref>
+      <partref quantity="2">
+        <partno>800-AA</partno>
+        <zipcode>1000</zipcode>
+      </partref>
+    </Group>
+  </Join>
+  <Join>
+    <part type="Lawnmower">
+      <partno>800-BB</partno>
+    </part>
+    <Group Count="1">
+      <partref quantity="5">
+        <partno>800-BB</partno>
+        <zipcode>4000</zipcode>
+      </partref>
+    </Group>
+  </Join>
+  <Join>
+    <part type="Lapis Necklace">
+      <partno>890-AA</partno>
+    </part>
+    <Group Count="1">
+      <partref quantity="3">
+        <partno>890-AA</partno>
+        <zipcode>2000</zipcode>
+      </partref>
+    </Group>
+  </Join>
+  <Join>
+    <part type="UFO">
+      <partno>900-XX</partno>
+    </part>
+    <Group Count="0" />
+  </Join>
+</GroupJoin>

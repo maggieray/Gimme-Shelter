@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RightSeq>
+  <value>
+    <OrderID>5010</OrderID>
+    <CustomerID>ERNS</CustomerID>
+    <Description>Apple watch</Description>
+  </value>
+  <value>
+    <OrderID>2030</OrderID>
+    <CustomerID>SMAN</CustomerID>
+    <Description>Ipad</Description>
+  </value>
+  <value>
+    <OrderID>1010</OrderID>
+    <CustomerID>anvo</CustomerID>
+    <Description>analog monitor</Description>
+  </value>
+  <value>
+    <OrderID>3020</OrderID>
+    <CustomerID>XYIE</CustomerID>
+    <Description>byzantine node</Description>
+  </value>
+  <value>
+    <OrderID>3010</OrderID>
+    <CustomerID>XYIE</CustomerID>
+    <Description>distributed firewall</Description>
+  </value>
+  <value>
+    <OrderID>2010</OrderID>
+    <CustomerID>SMAN</CustomerID>
+    <Description>iphone</Description>
+  </value>
+  <value>
+    <OrderID>5020</OrderID>
+    <CustomerID>ZWAN</CustomerID>
+    <Description>keyboard</Description>
+  </value>
+  <value>
+    <OrderID>1020</OrderID>
+    <CustomerID>AnVo</CustomerID>
+    <Description>ups</Description>
+  </value>
+  <value>
+    <OrderID>2020</OrderID>
+    <CustomerID>SMAN</CustomerID>
+    <Description>Рокета(rocket)</Description>
+  </value>
+  <value>
+    <OrderID>4010</OrderID>
+    <CustomerID>SMAN</CustomerID>
+    <Description>ручка(pen)</Description>
+  </value>
+</RightSeq>

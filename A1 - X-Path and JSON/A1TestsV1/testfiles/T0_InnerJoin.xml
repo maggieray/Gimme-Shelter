@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<InnerJoin>
+  <Join>
+    <Customer CustomerID="pdel">Patrice</Customer>
+    <Order OrderID="4010" CID="pdel">cuda card</Order>
+  </Join>
+  <Join>
+    <Customer CustomerID="rnic">Radu</Customer>
+    <Order OrderID="1010" CID="rnic">flash memory</Order>
+  </Join>
+  <Join>
+    <Customer CustomerID="rnic">Radu</Customer>
+    <Order OrderID="1020" CID="rnic">optical mouse</Order>
+  </Join>
+  <Join>
+    <Customer CustomerID="sman">Mano</Customer>
+    <Order OrderID="2010" CID="sman">iphone</Order>
+  </Join>
+  <Join>
+    <Customer CustomerID="sman">Mano</Customer>
+    <Order OrderID="2020" CID="sman">pocket pc</Order>
+  </Join>
+  <Join>
+    <Customer CustomerID="sman">Mano</Customer>
+    <Order OrderID="2030" CID="sman">digital camera</Order>
+  </Join>
+</InnerJoin>

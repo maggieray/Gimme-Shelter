@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GroupJoin>
+  <Join>
+    <Customer>
+      <CustomerID>ANCA</CustomerID>
+      <Name>Alex</Name>
+      <Age>4</Age>
+    </Customer>
+    <Group Count="0" />
+  </Join>
+  <Join>
+    <Customer>
+      <CustomerID>GGIM</CustomerID>
+      <Name>Georgy(Георгй)</Name>
+      <Age>58</Age>
+    </Customer>
+    <Group Count="0" />
+  </Join>
+  <Join>
+    <Customer>
+      <CustomerID>SMAN</CustomerID>
+      <Name>Mano</Name>
+      <Age>42</Age>
+    </Customer>
+    <Group Count="4">
+      <value>
+        <OrderID>2030</OrderID>
+        <CustomerID>SMAN</CustomerID>
+        <Description>Ipad</Description>
+      </value>
+      <value>
+        <OrderID>2010</OrderID>
+        <CustomerID>SMAN</CustomerID>
+        <Description>iphone</Description>
+      </value>
+      <value>
+        <OrderID>2020</OrderID>
+        <CustomerID>SMAN</CustomerID>
+        <Description>Рокета(rocket)</Description>
+      </value>
+      <value>
+        <OrderID>4010</OrderID>
+        <CustomerID>SMAN</CustomerID>
+        <Description>ручка(pen)</Description>
+      </value>
+    </Group>
+  </Join>
+  <Join>
+    <Customer>
+      <CustomerID>XYIE</CustomerID>
+      <Name>Xinfeng</Name>
+      <Age>48</Age>
+    </Customer>
+    <Group Count="2">
+      <value>
+        <OrderID>3020</OrderID>
+        <CustomerID>XYIE</CustomerID>
+        <Description>byzantine node</Description>
+      </value>
+      <value>
+        <OrderID>3010</OrderID>
+        <CustomerID>XYIE</CustomerID>
+        <Description>distributed firewall</Description>
+      </value>
+    </Group>
+  </Join>
+  <Join>
+    <Customer>
+      <CustomerID>ZWAN</CustomerID>
+      <Name>Zhengping(正平)</Name>
+      <Age>26</Age>
+    </Customer>
+    <Group Count="1">
+      <value>
+        <OrderID>5020</OrderID>
+        <CustomerID>ZWAN</CustomerID>
+        <Description>keyboard</Description>
+      </value>
+    </Group>
+  </Join>
+  <Join>
+    <Customer>
+      <CustomerID>anvo</CustomerID>
+      <Name>antony</Name>
+      <Age>33</Age>
+    </Customer>
+    <Group Count="1">
+      <value>
+        <OrderID>1010</OrderID>
+        <CustomerID>anvo</CustomerID>
+        <Description>analog monitor</Description>
+      </value>
+    </Group>
+  </Join>
+  <Join>
+    <Customer>
+      <CustomerID>mlit</CustomerID>
+      <Name>michael(Михаил)</Name>
+      <Age>27</Age>
+    </Customer>
+    <Group Count="0" />
+  </Join>
+</GroupJoin>

@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>
+  <TITLE>XPath Tutorial Application</TITLE>
+  <STYLE>
+    BODY {font-family:Arial}
+    .heading {font-family:"Arial Black"}
+    .sample {cursor:hand; font:9pt Courier; text-decoration:underline; text-indent:-1em; margin-left:1em}
+    .note {font-size:x-small; font-style:italic}
+  </STYLE>
+<!--TOOLBAR_START-->
+<!--TOOLBAR_EXEMPT-->
+<!--TOOLBAR_END-->
+</HEAD>
+
+<SCRIPT src="reportErrors.js"></SCRIPT>
+
+<SCRIPT>
+  var makeID, source, stylesheet;
+
+  function doQuery(theQuery)
+  {
+     xmlSrc.innerHTML = result;
+     var q = source.selectNodes(theQuery);
+
+    for (var e = q.nextNode(); e != null; e = q.nextNode())
+    {
+     try
+     {
+         eID = e.transformNode(makeID);
+         document.all.item(eID).style.backgroundColor = "yellow";
+      }
+      catch (exception)
+      {
+         result = reportRuntimeError(exception);
+         alert(result);
+      }
+    }
+  }
+
+  function loadQuery()
+  {
+     var q = window.event.srcElement.innerText;
+     qryIn.value = q;
+     doQuery(q);
+  }
+
+</SCRIPT>
+
+<SCRIPT FOR="window" EVENT="onload">
+   makeID = new ActiveXObject("Msxml2.DOMDocument.6.0");
+   makeID.async = false;
+   makeID.load("makeID.xsl");
+   if (makeID.parseError.errorCode != 0)
+   {
+      result = reportParseError(makeID.parseError);
+      alert(result);
+   }
+
+   source = new ActiveXObject("Msxml2.DOMDocument.6.0");
+   source.async=false;
+   source.load("authors.xml");
+   source.setProperty("SelectionLanguage", "XPath");
+   if (source.parseError.errorCode != 0)
+   {
+      result = reportParseError(source.parseError);
+      alert(result);
+   }
+
+   stylesheet = new ActiveXObject("Msxml2.DOMDocument.6.0");
+   stylesheet.async = false;
+   stylesheet.load("hilite-xml.xsl");
+   if (source.parseError.errorCode != 0)
+   {
+      result = reportParseError(source.parseError);
+      alert(result);
+   }
+
+  try
+  {
+    result = source.transformNode(stylesheet);
+  }
+  catch (e)
+  {
+    result = reportRuntimeError(e);
+  }
+   xmlSrc.innerHTML = result;
+</SCRIPT>
+
+<BODY>
+<DIV class=note>Demonstration of quering against an XML document using XPath expressions.</DIV>
+
+<DIV class=heading>XPath Expression:</DIV>
+<INPUT ID=qryIn SIZE=60 TYPE=TEXT>
+<INPUT TYPE="BUTTON" VALUE="Select Nodes" onClick="doQuery(qryIn.value)" id=BUTTON1 name=BUTTON1>
+<BR>
+
+<TABLE>
+<TR>
+<TD VALIGN="top">
+<DIV class=heading>Some Sample Queries:</DIV>
+
+<DIV class=sample onclick="loadQuery()">/authors/author[2]/nationality</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">/authors/author[1]/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author/name/text()</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/person/name/text()</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/person//name/text()</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/*/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">//name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author/*</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[nationality]/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[nationality='Canadian']/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[nationality!='Canadian']/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[not(nationality)]/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[not(nationality='Canadian')]/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[not(nationality!='Canadian')]/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[nationality='Canadian']/name/../nationality</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author/@period</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[@period]</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[not(@period)]</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[@period="modern"]</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[@period]/name/text()</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[nationality='British']/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[nationality='British'][@period="modern"]/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[nationality='British' and @period="modern"]/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[nationality='British' or @period]/name</DIV>
+
+<DIV class=sample onclick="loadQuery()">authors/author[nationality='British'] |  authors/author[@period]/name</DIV>
+
+</TD>
+<TD VALIGN="top">
+<DIV class=heading>XML source document</DIV>
+<SPAN id=xmlSrc></SPAN>
+</TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>
