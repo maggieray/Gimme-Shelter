@@ -1,0 +1,14 @@
+:- multifile op/4.
+:- dynamic op/4.
+:- multifile cost/3.
+:- dynamic cost/3.
+
+%% cost(State, Neighbor, ArcCost)
+% all arcs (i.e., operator costs) are one unit
+cost(_, _, 1).
+
+%%%%%%%%%%%%%%%
+%
+%  put your operator descriptions here
+%
+%%%%%%%%%%%%%%%

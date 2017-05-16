@@ -1,0 +1,34 @@
+bash-3.2$ ~/runSWIProlog
+Welcome to SWI-Prolog (Multi-threaded, 64 bits, Version 6.4.1)
+Copyright (c) 1990-2013 University of Amsterdam, VU Amsterdam
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software,
+and you are welcome to redistribute it under certain conditions.
+Please visit http://www.swi-prolog.org for details.
+
+For help, use ?- help(Topic). or ?- apropos(Word).
+
+?- ['../idastar.pl'].  %%% loading solver
+% ../idastar.pl compiled 0.00 sec, 16 clauses
+true.
+
+?- [sample].  %%% loading domain
+% sample compiled 0.00 sec, 3 clauses
+true.
+
+?- solution(problem1, S).  %%% running solver
+% problem1 compiled 0.00 sec, 7 clauses
+Trying Depth bound: 
+0
+
+Trying Depth bound: 
+1
+
+Trying Depth bound: 
+2
+
+Trying Depth bound: 
+3
+
+S = [a, b, f, d] 
+
+?- 

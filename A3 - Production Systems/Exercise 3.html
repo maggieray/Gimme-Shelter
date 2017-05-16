@@ -1,0 +1,274 @@
+
+<!-- saved from url=(0076)https://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/ex3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Exercise 3</title><style type="text/css"></style></head>
+
+<body bgcolor="lightgray">
+
+<title>Artificial Intelligence - Exercise 3</title>
+
+<br>
+<hr>
+<center><h4>
+CompSci 367 Semester 2: Artificial Intelligence
+</h4>
+<h3>
+Assignment 3: Production Systems
+</h3>
+</center>
+<h4>
+<hr>
+<b>Assessment</b>
+</h4>
+Due: Tuesday, 22 September, 2015 12:00 PM (midday)
+<br>
+Worth: Six (6) percent of total marks for class
+<hr>
+<br>
+<b>Aims of the Assignment</b>
+<p>
+This assignment has two purposes. The first is to give you experience
+with production system representations and with methods that manipulate 
+them. To complete the exercise, you must implement systems that encode
+knowledge as production rules and that uses them to carry out cognitive 
+tasks. A second purpose is to expose you to programming with hierarchical
+task networks, which can be implemented as sets of production rules. 
+</p><p>
+Production systems are a class of rule-based formalisms that, like logic 
+programs, rely centrally on relational pattern matching, but that differ 
+by mimicking the cyclic operation of human cognition over time. The 
+production system framework you will use for this assignment, PROPS, 
+has a syntax similar to that in Prolog, the language in which it is 
+implemented. This provides it with powerful pattern-matching abilities 
+that will prove useful for the assignment. 
+</p><p>
+As explained in the lecture on production systems, a program in this
+framework utilizes two stores: a working memory that changes dynamically
+and a production rule memory that is (typically) static. You will find 
+an introduction to the language's syntax and operation at
+</p><p>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/props.html">
+http://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/props.html</a> 
+</p><p>
+Briefly, each working memory element should take the form of a Prolog
+fact, and thus should have a predicate and zero or more arguments. Each 
+production rule should have a left-hand side that comprises a set of 
+conditions and a right-hand side that specifies one or more actions, 
+the most important being actions that add elements to working memory 
+or that remove them. You can download the PROPS interpreter at
+</p><p>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/props.txt">
+http://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/props.txt</a> , 
+</p><p>
+rename it to be <i>props.pl</i>, 
+and load the file into Prolog to run your production system program. 
+You may not modify the PROPS interpreter for this assignment; you may
+only create production rules that it runs. 
+</p><p>
+<b>Part A: The Seriation Task</b>
+</p><p>
+This part of the exercise focuses on the task of <i>seriation</i>, 
+which has been studied extensively by Piaget and other psychologists 
+interested in cognitive development. Given a set of objects like
+</p><p>   
+</p><pre>     A height 1 width 3
+     B height 2 width 2
+     C height 3 width 1
+</pre>
+<p>   
+one must position the objects in a sequence according to their 
+size along a specified dimension. For instance, adopting height 
+as the criterion attribute should produce the (descending) order 
+C B A. In contrast, making width the criterion dimension should
+give the order A B C. 
+</p><p>   
+This appears to be a simple sorting task, but young children 
+have considerable difficulty accomplishing it and they seem 
+to traverse a number of stages in their performance that involve
+mastery of distinct cognitive abilities. Young (1972) reports 
+a production system model of these stages on the seriation task. 
+We will not focus on cognitive development here, but we will see
+that seriation is not as trivial as it seems.
+To help you become familiar with PROPS, we have provided English 
+paraphrases of six production rules that together carry out this 
+task correctly. You must translate these paraphrases, available at 
+<a href="https://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/seriate.txt">seriate.txt</a>, 
+into correct PROPS syntax and ensure that your system sorts objects
+properly. On its last cycle, the program should print "Finished sorting 
+on <i>dimension</i>.", where <i>dimension</i> is the sorting criterion. 
+</p><p>
+Your rules must be general enough to work with any criterion
+attribute, such as <i>height</i>, <i>width</i>, or <i>weight</i>. 
+Because we have not provided a simulated environment, the system 
+cannot physically move the objects. Instead, you should mimic such
+actions by adding elements to working memory that describe spatial 
+relations. More specifically, to encode the sequence of objects 
+C B A, where C is leftmost and A is rightmost, working memory should
+contain the elements <i>left_of(c, b)</i> and <i>left_of(b, a)</i>. 
+Your seriation program should <i>not</i> utilize any lists, only
+predicates with arguments. 
+</p><p>
+Demonstrate that the production system works correctly by running it 
+on the initial environments provided in 
+<a href="https://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/sort1.txt">sort1.txt</a> 
+and 
+<a href="https://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/sort2.txt">sort2.txt</a>, which involve the same four objects and which
+differ only in the criterion dimension. The representation of working
+memory elements in these files will constrain the production rules that 
+operate over them. Trace the production firings that occur during the
+run and display the contents of working memory after the system finishes.
+If you like, you may also trace selected contents of working memory on 
+each cycle, but this is optional. 
+</p><p>
+</p><p>
+<b>Part B: Inverting a Tower</b>
+</p><p>
+For Part B of the exercise, you should use PROPS to construct a simple
+hierarchical task network for the blocks world that inverts an existing
+tower. You should assume that environmental states are described with 
+five predicates: 
+</p><p>
+</p><pre>    block(a), which states that a is a block; 
+    table(g), which states that g is a table; 
+    hand(h), which states that h is a hand; 
+    on(a, b), which states that a is on b, where b is a block or a table; 
+    holding(h, a), which states that block a is held by hand h. 
+</pre>
+<p>
+We have provided production rules in <a href="https://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/blocks.txt">blocks.txt</a> 
+that encode four primitive operators for this domain: <i>pick_up</i>, 
+<i>unstack</i>, <i>put_down</i>, and <i>stack</i>. For instance, the 
+rule for unstacking X from Y is: 
+</p><p>
+</p><pre>unstack
+  if task(unstack(X, Y)) and
+     block(X) and block(Y) and hand(Z) and
+     on(X, Y) and not(on(_, X)) and not(holding(Z, _))
+  then remove(task(unstack(X, Y))) and
+       remove(on(X, Y)) and add(holding(Z, X))).
+</pre>
+<p>
+Note that, besides having conditions that describe the environmental 
+state, this rule also includes a condition that there is an active 
+task to unstack X from Y. Thus, it will not match unless such a task
+is in working memory. 
+</p><p>
+You should extend this production system by adding exactly <i>six</i> 
+rules that, combined with the four operator rules, will invert any 
+specified tower. For example, if the situation includes <i>on(d, c)</i>, 
+<i>on(c, b)</i>, <i>on(b, a)</i>, and <i>on(b, table)</i>, and if the 
+system is given <i>task(invert_tower([d, c, b, a])</i>, then it should 
+apply a sequence of rules that produce the working memory 
+<i>on(a, b)</i>, <i>on(b, c)</i>, <i>on(c, d)</i>, and <i>on(d, table)</i>. 
+The rules that you add should not affect the environment state directly, 
+but rather only add new subtasks that, eventually, lead to the firing
+of operator productions that alter it. 
+</p><p> 
+Your rules should include a single task condition, zero or more
+environmental conditions, and the addition of one or more subtasks to
+working memory. The order in which the rule adds these subtasks is
+important. The PROPS conflict resolution scheme favors rules that 
+match against elements added more recently to working memory, but
+if the action side of a rule adds two tasks, T1 and T2, to memory, 
+the interpreter treats T1 as more recent than T2. Thus, it will select 
+a rule that matches against T1 over a rule that matches against T2, 
+unless it has already fired the former on an earlier cycle. This 
+means that, if you create a production rule that creates two or 
+more subtasks, they should appear in the action side in the order 
+that you want the system to pursue them.
+</p><p>
+The most natural way to approach this problem, and the one you should
+use, is through recursion. Your program should have: 
+</p><ol>
+<li>
+A rule for the base case that handles removing the top block from the 
+original tower and placing it on the table; 
+</li><li>
+A rule for the recursive case that handles moving each block that it 
+is neither the topmost or bottommost from  the tower to the new tower; and
+</li><li>
+A rule for the termination case that handles moving the block at the 
+base of the original tower (and thus on the table) to the top of the 
+new tower. 
+</li></ol>
+To support these three high-level production rules, you should also 
+write three intermediate rules for: 
+<ol>
+<li>
+Unstacking a block and putting it on the table; 
+</li><li>
+Unstacking a block and immediately placing it on another one; and 
+</li><li>
+Picking up a block from the table and stacking it on another block. 
+</li></ol>
+These three rules should each create subtasks that invoke the primitive 
+operators we have provided for the blocks world. 
+You should also include a <i>seventh</i> new production that detects
+when the inversion process is complete and prints the result, as in 
+"I have inverted the tower to produce [c,b,a]." The rule should not 
+create a new subtask; it should only print out the new tower's elements
+and invoke the <i>end</i> command. 
+<p></p><p>
+Demonstrate that the program works correctly by running your production 
+system for clearing blocks on the initial environments provided in
+<a href="https://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/tower2.txt">tower2.txt</a>, 
+<a href="https://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/tower3.txt">tower3.txt</a>, and 
+<a href="https://www.cs.auckland.ac.nz/courses/compsci367s2c/assignments/ex3/tower4.txt">tower4.txt</a>. 
+On each run, trace the rule firings and display the contents of working 
+memory at its completion. However, your code should be general enough to 
+invert any tower, provided there are no unmentioned blocks on top of it
+or below it. 
+</p><p>
+</p><hr>
+<h4>
+<b>Marking Guidelines for Assignment (six (6) total marks)</b>
+</h4>
+We will grade the answers that you provide for this assignment based on
+both the structure of your PROPS programs and their behavior: 
+<ol>
+<li>
+   The maximum score for Part A is two (2) marks. 
+   You will receive one-half (1/2) mark for each test file on which your 
+   code sorts objects in the correct order, from smallest to largest. You 
+   will receive one (1) mark if your rules correctly translate the English 
+   paraphrases that we have provided into PROPS syntax. 
+</li><li>
+   The maximum score for Part A is four (4) marks. 
+   You will receive one-half (1/2) mark for each test file on which 
+   your code moves blocks in the correct order to produce an inversion 
+   of the original tower. Your program cannot place all blocks in the
+   original tower on the table and then build a new tower. Rather, it
+   must construct the new tower as it is deconstructing the initial
+   placing, putting no more blocks on the table than necessary. You 
+   will receive one (1) mark for correct versions of the three rules 
+   that handle the <i>invert_tower</i> task and one (1) mark for 
+   correct versions of the three rules that handle the subtasks 
+   <i>unstack_and_put_down</i>, <i>unstack_and_stack</i>, and 
+   <i>pick_up_and_stack</i>. You will receive one-half (1/2) mark
+   for a correct version of the rule that prints the results of 
+   successful inversion. 
+</li></ol>
+Submit your final programs in two separate files, one each for Part A
+and B; you should name these <i>PartA.pl</i> and <i>PartB.pl</i>, 
+respectively. In each file, include all production rules, including 
+those we have provided. This file should NOT contain the initial 
+working memory, which can differ across runs, or the trace commands 
+you use in your runs; it should only contain the productions that are 
+common to runs on different tasks. Also submit two additional files 
+that contain your runs, one each for Part A and B; you should name 
+these <i>PartA.run</i> and <i>PartB.run</i>, respectively. In each 
+run file, you should display the contents of working memory after 
+each system run, and you should trace the productions that fire 
+on each cycle during the various runs. Include successive runs on
+different tasks (i.e., when loading different working memories) in 
+a single file.
+<p>
+Deposit your programs and traces in the 
+<a href="https://adb.auckland.ac.nz/Home/">Computer Science Assignment
+Dropbox</a> before the assignment deadline. <i>Note:</i> If you
+submit your assignment after the deadline but within 48 hours after
+it, your earned marks will be multiplied by 0.8, so that, in the best
+case, you will get no more than 80 percent of the possible marks. We
+will not accept assignments more than 48 hours after the deadline.
+
+</p></body></html>

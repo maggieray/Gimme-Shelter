@@ -1,0 +1,56 @@
+
+% English paraphrase of a PROPS program for the seriation task that, 
+% given a set of objects, positions them (mentally) from right to 
+% left in order of increasing value along the criterion dimension.
+
+initiate_smaller
+  if A is the criterion and X is an object and 
+     X is not sorted and there is no smallest object, 
+  then try to find the smallest object on A and 
+       label X as (initially) the smallest on A. 
+
+update_smaller
+  if you are trying to find the smallest object on A and 
+     and X is (currently) the smallest on A and 
+     X is an object with value V1 on A and 
+     Y is an object with value V2 on A and 
+     V2 is less than V1 and Y is not sorted
+  then unlabel X as the smallest on A and 
+       label Y as (currently) the smallest on A. 
+
+end_smaller
+  if you are trying to find the smallest object on A
+  then stop trying to find that object and 
+       try to sort on criterion A. 
+
+initiate_sort
+  if you are trying to sort on criterion A and 
+     X is the smallest object on A and 
+     nothing has yet been sorted
+  then stop trying to sort on criterion A and 
+       unlabel X as the smallest object on A and 
+       note that X has been sorted and 
+       note that X is the latest object processed and
+       refresh that A is the criterion. 
+
+extend_sort
+  if you are trying to sort on criterion A and 
+     X is the smallest object on A and 
+     Y has been sorted and 
+     Y is the latest object processed 
+  then stop trying to sort on criterion A and 
+       unabel X as the smallest object on A and 
+       note that X has been sorted and 
+       unlabel Y as the latest object processed and 
+       note that X is the latest object processed and
+       place X to the left of Y and 
+       refresh that A is the criterion. 
+
+end_sort
+  if A is the criterion
+  then print that you have finished sorting on A and 
+       halt. 
+
+Note: You can "refresh" an element in working memory by removing 
+      it and then adding it again. This will overcome refraction
+      for any rule instance that matches against the element. 

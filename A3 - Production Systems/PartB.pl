@@ -1,0 +1,95 @@
+%recursion
+%1
+:- add_rule(
+       base_case
+       if
+        task(base_case(X,Y,Z)) and
+        block(X) and
+        block(Z) and
+        table(Y) and
+        not(on(_,Y))
+       then
+        remove(task(base_case(X,Y,Z))) and
+        add(task(to_table(X,Y))) and
+        add(task(recursive_case(X,Y,Z)))
+   ).
+%2
+:- add_rule(
+       recursive_case
+       if
+        task(recursive_case(X,Y,Z)) and
+        block(X) and
+        table(Y) and
+        block(Z) and
+        not(on(X,Y)) and
+        on(_,X) and
+        not(_,Z)
+       then
+        remove(task(recursive_case(X,Y,Z))) and
+        add(task(one_on_another(X,Z))) and
+        add(task(termination_case(X,Y,Z))) and
+        add(task(recursive_case(block(_),Y,X)))
+   ).
+%3
+:- add_rule(
+       termination_case
+       if
+        task(termination_case(X,Y,Z)) and
+        block(X) and
+        table(Y) and
+        block(Z) and
+        on(X,Y)
+       then
+        remove(task(termination_case)) and
+        add(task(table_to_block(X,Y))) and
+	add(task(finished))
+   ).
+%Intermediate rules
+%1.
+:- add_rule(
+       to_table
+       if
+        task(to_table(X)) and
+        block(X)
+       then
+        remove(task(to_table(X))) and
+        add(task(unstack(X))) and
+        add(task(put_down(X)))
+   ).
+%2.
+:- add_rule(
+       one_on_another
+       if
+        task(one_on_another(X,Y)) and
+        block(X) and
+        block(Y)
+       then
+        remove(task(one_on_another(X,Y))) and
+        add(task(unstack(X))) and
+        add(stacked(X)) and
+        add(task(stack(X,Y)))
+   ).
+%3.
+:- add_rule(
+       table_to_block
+       if
+        task(table_to_block(X,Y,Z)) and
+        block(X) and
+        block(Y) and
+        table(Z) and
+        on(Y,Z)
+       then
+        remove(task(table_to_block(X,Y,Z))) and
+        add(task(unstack(X,Y))) and
+        add(task(stack(X)))
+   ).
+
+%7th
+:- add_rule(
+       finished
+       if
+        task(finished)
+       then
+        print('I have inverted to produce [' + stacked(_) + ']') and
+        end
+   ).

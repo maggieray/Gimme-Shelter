@@ -1,0 +1,48 @@
+%% static predicates info
+:- dynamic static/1.
+% the only static predicates for this domain
+% are the type predicates: peg/1 and disk/1
+
+%% fluent predicates info 
+:- dynamic fluent/1.
+% fluents are not statics
+fluent(Pred/Arity) :- not(static(Pred/Arity)).
+
+%% derived predicates info
+:- dynamic derived/1.
+% clear(Thing) is a derived predicate
+% which you need to declare and then define as nothing
+% being on top of Thing (Thing can either be
+% a peg or a disk)
+
+% clear(Thing) :- ... .
+
+
+
+%% primitive predicates info
+:- dynamic primitive/1.
+% primitives are not derived
+primitive(Pred/Arity) :- not(derived(Pred/Arity)).
+
+%% metaLevel predicates info
+:- dynamic metaLevel/1.
+:- dynamic neq/2.
+metaLevel(neq/2).
+%%%% A neq B only A and B cannot be unified
+neq(A, B) :- A \== B.
+
+% smaller(Disk, Thing) is a metaLevel predicate
+% where all disks are considered "smaller" than
+% any Peg, and assuming that all disk names are just
+% integers then one disk is only smaller than
+% another disk if the former's name is less than
+% the latter's name
+% you should declare and define smaller/2
+
+% smaller(Disk, Thing) :- ... .
+
+
+%% objectLevel predicates info
+:- dynamic objectLevel/1.
+% objectLevel is not metaLevel
+objectLevel(Pred/Arity) :- not(metaLevel(Pred/Arity)).

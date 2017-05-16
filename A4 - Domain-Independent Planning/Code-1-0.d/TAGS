@@ -1,0 +1,47 @@
+
+aux1.pl,71
+not(6,106
+strictMember(8,123
+subsetOf(14,216
+strictSubsetOf(19,299
+
+idaStar.pl,107
+initialNextFBound(25,529
+idaStarSearch(31,820
+fbsearch(57,1773
+add_paths_fb(100,3556
+writeln(118,4180
+
+operator.pl,92
+operator(12,223
+opPreconditions(14,318
+opEffects(17,408
+opDeletes(21,481
+opAdds(25,624
+
+problem.pl,43
+problem(4,61
+goal(6,104
+initState(8,135
+
+progressionPlanning.pl,150
+neighbors(12,307
+isNeighbor(15,408
+applicable(19,521
+apply(24,647
+stateFluents(34,1060
+isGoal(47,1354
+satisfiedBy(53,1504
+bodyToList(108,3301
+
+solve.pl,138
+solve(12,202
+loadHeuristic(22,533
+loadProblem(29,755
+loadDomain(38,1003
+removeOntology :-removeOntology50,1370
+removePreds(62,1715
+
+step.pl,35
+stepOp(8,180
+stepBindings(10,213

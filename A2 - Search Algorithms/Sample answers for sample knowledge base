@@ -1,0 +1,56 @@
+bash-3.2$ ~/runSWIProlog
+Welcome to SWI-Prolog (Multi-threaded, 64 bits, Version 6.4.1)
+Copyright (c) 1990-2013 University of Amsterdam, VU Amsterdam
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software,
+and you are welcome to redistribute it under certain conditions.
+Please visit http://www.swi-prolog.org for details.
+
+For help, use ?- help(Topic). or ?- apropos(Word).
+
+?- [kb3, lawpa, lawneph, solveRiddle1, solveRiddle2, solveRiddle3].
+% kb3 compiled 0.00 sec, 27 clauses
+% lawpa compiled 0.00 sec, 3 clauses
+% lawneph compiled 0.00 sec, 3 clauses
+Warning: /Users/mbar098/MikesStuff/Academic.d/Teaching.d/CompSci.367.d/2015.d/Assignments.d/A1.d/solutions.d/solveRiddle1.pl:8:
+	Redefined static procedure fatherOf/2
+	Previously defined at /Users/mbar098/MikesStuff/Academic.d/Teaching.d/CompSci.367.d/2015.d/Assignments.d/A1.d/solutions.d/lawpa.pl:4
+% solveRiddle1 compiled 0.00 sec, 2 clauses
+Warning: /Users/mbar098/MikesStuff/Academic.d/Teaching.d/CompSci.367.d/2015.d/Assignments.d/A1.d/solutions.d/solveRiddle2.pl:9:
+	Redefined static procedure fatherOf/2
+	Previously defined at /Users/mbar098/MikesStuff/Academic.d/Teaching.d/CompSci.367.d/2015.d/Assignments.d/A1.d/solutions.d/solveRiddle1.pl:8
+% solveRiddle2 compiled 0.00 sec, 2 clauses
+Warning: /Users/mbar098/MikesStuff/Academic.d/Teaching.d/CompSci.367.d/2015.d/Assignments.d/A1.d/solutions.d/solveRiddle3.pl:7:
+	Redefined static procedure fatherOf/2
+	Previously defined at /Users/mbar098/MikesStuff/Academic.d/Teaching.d/CompSci.367.d/2015.d/Assignments.d/A1.d/solutions.d/solveRiddle2.pl:9
+% solveRiddle3 compiled 0.00 sec, 3 clauses
+true.
+
+?- lawpa(X,Y).
+X = j,
+Y = d.
+
+?- lawneph(X,Y).
+X = n,
+Y = d.
+
+?- solveRiddle1(X,Y).
+X = d,
+Y = h ;
+X = a,
+Y = d ;
+false.
+
+?- solveRiddle2(X,Y).
+X = d,
+Y = a ;
+X = a,
+Y = b ;
+false.
+
+?- solveRiddle3(X,Y).
+X = d,
+Y = f ;
+false.
+
+?- halt.
+bash-3.2$ 
